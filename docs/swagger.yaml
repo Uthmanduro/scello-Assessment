@@ -1,0 +1,130 @@
+openapi: 3.0.0
+info:
+  title: Task Manager API
+  description: A RESTful API for managing tasks with authentication and reports
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                role:
+                  type: string
+              required: [username, password]
+      responses:
+        201:
+          description: User registered
+  /auth/login:
+    post:
+      summary: Login and receive JWT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required: [username, password]
+      responses:
+        200:
+          description: JWT returned
+  /tasks:
+    get:
+      summary: Get tasks for the user
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        200:
+          description: List of tasks
+    post:
+      summary: Create a task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+              required: [title]
+      responses:
+        201:
+          description: Task created
+  /tasks/{id}:
+    put:
+      summary: Update a task
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                status:
+                  type: string
+      responses:
+        200:
+          description: Task updated
+    delete:
+      summary: Delete a task
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Task deleted
+  /report-time:
+    get:
+      summary: Get time spent on tasks
+      responses:
+        200:
+          description: Time report
+  /report:
+    get:
+      summary: Get task completion summary
+      responses:
+        200:
+          description: Task report

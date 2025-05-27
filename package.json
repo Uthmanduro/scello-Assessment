@@ -1,0 +1,37 @@
+{
+  "name": "scello",
+  "version": "1.0.0",
+  "description": "Scello interview assessment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uthmanduro/scello-Assessment.git"
+  },
+  "author": "Uthman Durosinlohun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Uthmanduro/scello-Assessment/issues"
+  },
+  "homepage": "https://github.com/Uthmanduro/scello-Assessment#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.16.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
